@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { Contact } from '../contacts/contact.model';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Contact, phoneTypeValues, addressTypeValues } from '../contacts/contact.model';
+import { ContactsService } from '../contacts/contacts.service';
+
 
 @Component({
   imports: [CommonModule, FormsModule],
@@ -11,11 +14,15 @@ import { Contact } from '../contacts/contact.model';
   styleUrls: ['./edit-contact.component.css']
 })
 export class EditContactComponent implements OnInit {
+  phoneTypes = phoneTypeValues;
+  addressTypes = addressTypeValues;
+
   contact: Contact = {
     id: '',
+    personal: false,
     firstName: '',
     lastName: '',
-    dateOfBirth: null,
+    dateOfBirth: '',
     favoritesRanking: 0,
     phone: {
       phoneNumber: '',
@@ -28,18 +35,23 @@ export class EditContactComponent implements OnInit {
       postalCode: '',
       addressType: '',
     },
+    notes: '',
   };
-  constructor(private route: ActivatedRoute, private contactsService:ContactService) { }
+  constructor(private route: ActivatedRoute, private contactsService: ContactsService, private router: Router) { }
 
   ngOnInit() {
     const contactId = this.route.snapshot.params['id'];
     if (!contactId) return
     this.contactsService.getContact(contactId).subscribe((contact) => {
-      console.log(contact)
+      if (contact)
+      this.contact = contact;
     });
   }
 
-  saveContact() {
-    console.log(this.contact);
+  saveContact(form: NgForm) {
+    console.log(this.contact.dateOfBirth, typeof this.contact.dateOfBirth);
+    this.contactsService.saveContact(form.value).subscribe({
+      next: () => this.router.navigate(['/contacts'])
+    });
   }
 }

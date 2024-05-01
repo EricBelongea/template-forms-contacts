@@ -9,7 +9,7 @@
   "files.autoSave": "onFocusChange",
   "workbench.editor.enablePreview": false,
   "workbench.colorTheme": "Monokai",
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "editor.quickSuggestions": {
     "comments": "off",
     "strings": "off",
@@ -22,4 +22,5 @@
   "terminal.integrated.fontFamily": "monospace",
   "window.zoomLevel": 1,
   "workbench.activityBar.location": "hidden",
+  
 }

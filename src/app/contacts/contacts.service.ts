@@ -16,6 +16,7 @@ export class ContactsService {
       //   const dob = c.dateOfBirth ? new Date(c.dateOfBirth) : null;
       //   return { ...c, dateOfBirth: dob }
       // }));
+      // The above turned the JSON String of date back into a date object. This is commented out because we're gonna work with strings instead of dealing with recreating date objects. Json can't handle dates.
   }
 
   getAllContacts(): Observable<Contact[]> {

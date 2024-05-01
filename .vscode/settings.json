@@ -8,7 +8,7 @@
   "editor.glyphMargin": false,
   "files.autoSave": "onFocusChange",
   "workbench.editor.enablePreview": false,
-  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorTheme": "Monokai",
   "workbench.statusBar.visible": false,
   "editor.quickSuggestions": {
     "comments": "off",
@@ -17,7 +17,7 @@
   },
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggestOnTriggerCharacters": false,
-  "editor.wordBasedSuggestions": false,
+  "editor.wordBasedSuggestions": "off",
   "terminal.integrated.fontSize": 20,
   "terminal.integrated.fontFamily": "monospace",
   "window.zoomLevel": 1,

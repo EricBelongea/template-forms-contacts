@@ -23,20 +23,22 @@
       </div>
     </section>
     <section>
-      <nav>Phone</nav>
-      <div class="flex-column" ngModelGroup="phone">
-        <div class="flex-group">
-          <input placeholder="Phone" [(ngModel)]="contact.phone.phoneNumber" name="phoneNumber"/>
-          <img src="/assets/plus-grey-blue.png" class="add" />
-        </div>
-        <div class="radio">
-          <span *ngFor="let phoneType of phoneTypes">
-            <input type="radio" [value]="phoneType.value" [(ngModel)]="contact.phone.phoneType" name="phoneType"> {{phoneType.title}}
-          </span>
-          <!-- The below works fine but the above uses a for loop of 'phoneTypeValues' from the contact.model -->
-          <!-- <input type="radio" value="mobile" [(ngModel)]="contact.phone.phoneType" name="phoneType"> Mobile
-          <input type="radio" value="work" [(ngModel)]="contact.phone.phoneType" name="phoneType"> Work
-          <input type="radio" value="other" [(ngModel)]="contact.phone.phoneType" name="phoneType"> Other -->
+      <nav>Phones</nav>
+      <div class="flex-column" ngModelGroup="phones">
+        <div *ngFor="let phone of contact.phones; let i =index" class="flex-column">
+          <div class="flex-group">
+            <input placeholder="Phone" [(ngModel)]="phone.phoneNumber" name="phoneNumber{{i}}"/>
+            <img src="/assets/plus-grey-blue.png" class="add" (click)="addPhone()"/>
+          </div>
+          <div class="radio">
+            <span *ngFor="let phoneType of phoneTypes">
+              <input type="radio" [value]="phoneType.value" [(ngModel)]="phone.phoneType" name="phoneType{{i}}"> {{phoneType.title}}
+            </span>
+            <!-- The below works fine but the above uses a for loop of 'phoneTypeValues' from the contact.model -->
+            <!-- <input type="radio" value="mobile" [(ngModel)]="contact.phone.phoneType" name="phoneType"> Mobile
+            <input type="radio" value="work" [(ngModel)]="contact.phone.phoneType" name="phoneType"> Work
+            <input type="radio" value="other" [(ngModel)]="contact.phone.phoneType" name="phoneType"> Other -->
+          </div>
         </div>
       </div>
     </section>
